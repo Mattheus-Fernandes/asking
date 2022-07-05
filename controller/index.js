@@ -1,23 +1,30 @@
 function index(req, res) {
     res.render("index", {
-        tittle: "Asking - Inicio"
+        titulo: "Asking - Inicio"
     })
 }
 
 function perguntar(req, res) {
     res.render("perguntar", {
-        tittle: "Asking - Perguntas"
+        titulo: "Asking - Perguntas"
     })
 }
 
 function pergunta(req, res) {
     res.render("pergunta", {
-        tittle: "Asking - Respostas"
+        titulo: "Asking - Respostas"
     })
+}
+function salvarPergunta(req, res) {
+    let pergunta = req.body.pergunta
+    let resposta = req.body.resposta
+
+    console.log(pergunta, resposta)
 }
 
 module.exports = {
     index,
     perguntar,
-    pergunta
+    pergunta,
+    salvarPergunta
 }

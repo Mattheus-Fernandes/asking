@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("partials/head.ejs") %> 
+<body>
+    <%- include("partials/header.ejs") %> 
+
+    <div class="container">
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="mb-5">Realizar pergunta</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <label class="mb-3" >Pergunta:</label>
+                    <input name="pergunta" type="text" class="form-control" placeholder="Digite aqui a sua pergunta">
+
+                    <label class="mb-3">Resposta:</label>
+                    <textarea name="resposta" class="form-control" placeholder="Digite aqui a sua resposta"></textarea>
+
+                    <button class="btn btn-success mt-3">Perguntar</button>
+                </form>
+            </div>
+        </div>
+  
+    </div>
+
+
+
+
+    <%- include("partials/script_bootstrap.ejs") %>
+</body>
+</html>

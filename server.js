@@ -11,9 +11,6 @@ app.use("/", routes)
 
 
 
-
-
-
 //Conection with server 
 const port = process.env.PORT || 8080
 app.listen(8080,()=> console.log(`The server is listening on the port ${port}`))

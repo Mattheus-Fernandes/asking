@@ -1,7 +1,9 @@
 const Pergunta = require("../model/Pergunta")
 
 function index(req, res) {
-    Pergunta.findAll({raw: true})
+    Pergunta.findAll({raw: true, order: [
+        ["id","DESC"]
+    ]})
     .then(perguntas => {
         res.render("index", {
             titulo: "Asking - Inicio",

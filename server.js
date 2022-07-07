@@ -1,8 +1,17 @@
 const express = require("express")
 const app = express()
 const routes = require("./routes/routes")
+const db = require("./database/index")
 
-//Hability EJS
+
+//Enabling Databse
+db.authenticate()
+.then(()=> console.log("Connection with database"))
+.catch((msgError) => {
+    console.log(msgError)
+})
+
+//Enabling EJS
 app.set("view engine", "ejs")
 
 app.use(express.urlencoded({extended: true}))

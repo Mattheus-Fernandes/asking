@@ -1,7 +1,13 @@
+const Pergunta = require("../model/Pergunta")
+
 function index(req, res) {
-    res.render("index", {
-        titulo: "Asking - Inicio"
-    })
+    Pergunta.findAll({raw: true})
+    .then(perguntas => {
+        res.render("index", {
+            titulo: "Asking - Inicio",
+            perguntas
+        })
+    } )
 }
 
 function perguntar(req, res) {
@@ -19,7 +25,12 @@ function salvarPergunta(req, res) {
     let pergunta = req.body.pergunta
     let resposta = req.body.resposta
 
-    console.log(pergunta, resposta)
+    Pergunta.create({
+        pergunta,
+        resposta
+    }).then(() => {
+        res.redirect("/")
+    })
 }
 
 module.exports = {

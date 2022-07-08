@@ -1,4 +1,5 @@
 const Pergunta = require("../model/Pergunta")
+const Respostas = require("../model/Resposta")
 
 function index(req, res) {
     Pergunta.findAll({raw: true, order: [

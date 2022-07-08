@@ -14,6 +14,8 @@ db.authenticate()
 //Enabling EJS
 app.set("view engine", "ejs")
 
+app.set(express.static("public"))
+
 app.use(express.urlencoded({extended: true}))
 
 app.use("/", routes)

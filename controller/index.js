@@ -26,10 +26,19 @@ function pergunta(req, res) {
         where: {id: idPergunta}
     }).then(pergunta => {
         if(pergunta != undefined){
-            res.render("pergunta",{
-                titulo: "Asking - Respostas",
-                pergunta
+
+            Respostas.findAll({
+                where: {perguntaId: pergunta.id},
+                order:[["id","DESC"]]
+            }).then((respostas)=> {
+                res.render("pergunta",{
+                    titulo: "Asking - Respostas",
+                    pergunta,
+                    respostas
+                })
             })
+
+            
         } else {
             res.redirect("/")
         }
@@ -48,9 +57,22 @@ function salvarPergunta(req, res) {
     })
 }
 
+function salvarResposta(req, res) {
+    let corpo = req.body.corpo
+    let idPergunta = req.body.pergunta
+
+    Respostas.create({
+        corpo: corpo,
+        perguntaId: idPergunta
+    }).then(()=> {
+        res.redirect("/pergunta/"+idPergunta)
+    })
+}
+
 module.exports = {
     index,
     perguntar,
     pergunta,
-    salvarPergunta
+    salvarPergunta,
+    salvarResposta
 }
